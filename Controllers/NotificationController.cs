@@ -19,7 +19,7 @@ namespace NotificationApi.Controllers
         public async Task<IActionResult> Send([FromBody] NotificationRequest request)
         {
             var result = await _notificationService.NotifyAsync(request.Recipient, request.Message, request.ChannelName);
-            return Ok(result.Message);
+            return Ok(result);
         }
     }
 }

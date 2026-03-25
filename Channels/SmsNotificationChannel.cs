@@ -1,14 +1,17 @@
 ﻿using NotificationApi.Interfaces;
+using NotificationApi.Models;
 
 namespace NotificationApi.Services
 {
     public class SmsNotificationChannel : INotificationChannel
     {
         public string ChannelName => "sms";
-        public Task SendMessage(string recipient, string message)
+        public async Task<NotificationResponse> SendAsync(string recipient, string message)
         {
-            Console.WriteLine($"[SMS] Para: {recipient} | Mensagem: {message}");
-            return Task.CompletedTask;
+            string messageResult = ($"[SMS] Para: {recipient} | Mensagem: {message}");
+
+            await Task.CompletedTask;
+            return new NotificationResponse(true, messageResult, DateTime.Now);
         }
     }
 }

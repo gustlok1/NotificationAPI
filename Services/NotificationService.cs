@@ -17,8 +17,7 @@ namespace NotificationApi.Services
         {
             //Factory found channel
             var channel = _factory.Get(channelName);
-            await channel.SendMessage(recipient, message);
-            return new NotificationResponse(true, "Notification sent!", DateTime.Now);
+            return await channel.SendAsync(recipient, message);
         }
     }
 }
